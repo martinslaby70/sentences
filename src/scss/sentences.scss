@@ -1,0 +1,97 @@
+.sentenceContainer{
+    padding: 30px 50px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+
+
+    .sentence{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background-color: rgba(128, 128, 128, 0.159);
+        margin: 10px;
+        border-radius: 8px;
+        .avatar{
+            min-width: 100px;
+            min-height: 100px;
+            margin: 10px;
+            >div{
+                border-radius: 50%;
+                height: 80px;
+                width: 80px;
+                margin: 10px;
+                
+
+                svg{
+                    margin: 20%;
+                    width: 60%;
+                    height: 60%;
+                }
+            }
+        }
+
+        div{
+            max-width: 320px;
+            p{
+                margin: 0px;
+                
+                &.time{
+                    font-size: small;
+                    color: grey;
+                }
+            }
+        }
+        &:hover>.delete{
+            width: 40px;
+        }
+        .delete{
+            cursor: pointer;
+            transition: width .3s ease-in-out;
+            background-color: red;
+            height: 100%;
+            margin-left: auto;
+            border-radius: 0 8px 8px 0;
+            width: 0px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
+
+
+@media only screen and (max-width: 1070px) {
+    .sentenceContainer{
+        width: 90%;
+        margin: 5%;
+        padding: 0;
+        .sentence{
+            margin: 5px 0px;
+
+            .avatar{
+                min-width: 70px;
+                width: 70px;
+                margin: 5px;
+                
+                div{
+                    width: 60px;
+                    height: 60px;
+                    margin: 5px;
+                    margin-top: 20px;
+                }
+               
+            }
+
+            >div{
+                max-width: 70%;
+            }
+
+            .delete{
+                height: 110px;
+            }
+        }
+    }
+
+}
