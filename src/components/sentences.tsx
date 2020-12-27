@@ -23,7 +23,7 @@ const Sentenses = () => {
         return(
             <div key={sentence.id}  className="sentence">
                 <div className="avatar">
-                    <div style={backgorundStyle}>
+                    <div style={backgorundStyle}> 
                         <FontAwesomeIcon icon={faUser} color={sentence.avatar.foreground}/>
                     </div>
                 </div>
