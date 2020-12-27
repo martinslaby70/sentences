@@ -7,6 +7,7 @@ The software will ask four questions
  2. What?
  3. When?
  4. Where?
+ 
 and subseguently will display a sentence using the answers
 `__WHO__ __WHAT__ __WHERE__ __WHEN__`
 Example:
@@ -14,11 +15,14 @@ Example:
  2. What? is coding
  3. When? today
  4. Where? on his computer
+
 will display
 `Mark is coding on his computer today`
+
 Requirements:
  - React
  - Redux
+ 
 Optional:
  - TypeScript
 Optionally, feel free to add a personal touch and show your skills.
