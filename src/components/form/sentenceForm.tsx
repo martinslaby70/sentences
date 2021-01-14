@@ -76,13 +76,13 @@ const SentenceForm = () => {
                 <input type="text" placeholder="is coding" minLength={3} maxLength={40} onChange={(e) => setWhat(e.target.value)} ref={whatRef} required />
             </div>
             <div className="formgroup">
-                <label>Where ?</label>
-                <input type="text" placeholder="on his computer" minLength={3} maxLength={30} onChange={(e) => setWhere(e.target.value)} ref={whereRef} required />
-            </div>
-            <div className="formgroup">
                 <label>When ?</label>
                 <input type="text" placeholder="today" minLength={3} maxLength={20} onChange={(e) => setWhen(e.target.value)} ref={whenRef} required />
             </div>
+            <div className="formgroup">
+                <label>Where ?</label>
+                <input type="text" placeholder="on his computer" minLength={3} maxLength={30} onChange={(e) => setWhere(e.target.value)} ref={whereRef} required />
+            </div>          
 
             <AvatarPicker 
                 setBackgroundColor={setBackground} 
