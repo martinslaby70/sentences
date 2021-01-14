@@ -1,7 +1,8 @@
 import React from 'react'
 
-//context
-import { SentencesContextProvider } from './contexts/sentenceContext';
+//redux
+import { store } from './redux/store';
+import { Provider } from "react-redux";
 
 //components
 import FormContainer from './components/form/formContainer';
@@ -12,10 +13,10 @@ const App = () => {
 
 
   return(
-    <SentencesContextProvider>
+    <Provider store={store}>
       <FormContainer />
       <Sentenses />    
-    </SentencesContextProvider>
+    </Provider>
   )
 }
 

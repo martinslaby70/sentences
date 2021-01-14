@@ -1,12 +1,13 @@
-import React, { useContext, useState, useRef, useEffect } from 'react'
+import React, {useState, useRef, useEffect } from 'react'
 import { v4 as uuid } from 'uuid';
-
-//context
-import { SentencesContext } from '../../contexts/sentenceContext';
 import AvatarPicker from './avatarPicker';
 
+//redux
+import { useDispatch } from 'react-redux';
+
 const SentenceForm = () => {
-    const {addSentence} = useContext(SentencesContext)!;
+    
+    const dispatch = useDispatch();
 
     const [who, setWho] = useState('');
     const [what, setWhat] = useState('');
@@ -23,13 +24,10 @@ const SentenceForm = () => {
     const submitButtonRef = useRef<HTMLButtonElement | null>(null);
 
     useEffect(() => {
-
-        if (whoRef.current && whatRef.current && whenRef.current && whereRef.current && submitButtonRef.current)
-            if (whoRef.current.validity.valid && whatRef.current.validity.valid && whenRef.current.validity.valid && whereRef.current.validity.valid)
-                submitButtonRef.current.classList.add('valid')
-            else
-                submitButtonRef.current.classList.remove('valid')
-
+        if (whoRef.current?.validity.valid && whatRef.current?.validity.valid && whenRef.current?.validity.valid && whereRef.current?.validity.valid)
+            submitButtonRef.current?.classList.add('valid')
+        else
+            submitButtonRef.current?.classList.remove('valid')
     },[who, what, when, where])
   
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -38,20 +36,23 @@ const SentenceForm = () => {
         const date = new Date();
         const formatedDate = `${date.getDay()}.${date.getMonth()}.${date.getFullYear()}`;
         
-        addSentence({
-            id: uuid(),
-            created: formatedDate,
-            sentence: {
-                who,
-                what,
-                when,
-                where
-            },
-            avatar: {
-                foreground,
-                background
+        dispatch({
+            type: "ADD_SENTENCE",
+            payload: {
+                id: uuid(),
+                created: formatedDate,
+                sentence: {
+                    who,
+                    what,
+                    when,
+                    where
+                },
+                avatar: {
+                    foreground,
+                    background
+                }
             }
-        });
+        })
 
         
         if (whoRef.current && whatRef.current && whenRef.current && whereRef.current)

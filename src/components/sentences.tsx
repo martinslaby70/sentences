@@ -1,5 +1,8 @@
-import React, { useContext } from 'react'
-import { SentencesContext } from '../contexts/sentenceContext';
+import React from 'react'
+
+//redux
+import { useDispatch, useSelector } from 'react-redux';
+import { SentencesState } from './../redux/reducer'; 
 
 //font awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,9 +11,18 @@ import { faUser, faTimes } from '@fortawesome/free-solid-svg-icons'
 //scss
 import './../scss/sentences.scss'
 
+
 const Sentenses = () => {
 
-    const {sentences, removeSentence} = useContext(SentencesContext)!;
+    const sentences = useSelector<SentencesState, SentencesState['sentences']>((state) => state.sentences);
+    const dispatch = useDispatch();
+
+    const removeSentence = (sentenceId: string) => {
+        dispatch({
+            type: "ADD_SENTENCE",
+            payload: sentenceId
+        })
+    }
     
     const displaySentences = sentences.map(sentence => {    
         
