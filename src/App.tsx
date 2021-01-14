@@ -11,7 +11,6 @@ import Sentenses from './components/sentences';
 
 const App = () => {
 
-
   return(
     <Provider store={store}>
       <FormContainer />

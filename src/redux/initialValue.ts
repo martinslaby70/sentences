@@ -1,11 +1,13 @@
-import {sentence} from '../interfaces/sentence';
 import {data as dummySentences} from '../dummyData/data';
 
-//output interface 
-import { SentencesState } from './reducer';
+//interfaces 
+import { sentence } from '../interfaces/sentence';
+export interface InitialState {
+    sentences: sentence[]
+}
 
-const initialValue = () => {
-    let ret: SentencesState = { sentences: dummySentences } 
+const initialValue = ():InitialState => {
+    let ret = dummySentences
    
     let tempSentences: sentence[] = []; 
     let keys = Object.keys(localStorage);
@@ -14,21 +16,19 @@ const initialValue = () => {
     while (i--) {    
         let sentence = localStorage.getItem(keys[i]);
         tempSentences.push(JSON.parse(sentence!))
-    }
-    console.log(tempSentences);
-    
+    } 
 
     if (tempSentences.length !== 0)
     {
         dummySentences.forEach(sentence => {
             localStorage.setItem(sentence.id, JSON.stringify(sentence));
         });
-        ret = {
-            sentences: tempSentences
-        } 
+        ret = tempSentences;
     }
-        
-    return ret;
+    
+    return {
+        sentences: ret
+    }
 }
 
 export default initialValue;

@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from 'redux';
-import {reducer as appReducer} from './reducer';
+import {reducer as sentenceReducer} from './reducer';
 
 const reducers = combineReducers({
-    app: appReducer
+    sentences: sentenceReducer
 });
 
 export const store = createStore(reducers);

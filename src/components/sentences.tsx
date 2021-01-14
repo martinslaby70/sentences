@@ -2,7 +2,8 @@ import React from 'react'
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
-import { SentencesState } from './../redux/reducer'; 
+import { sentence } from '../interfaces/sentence';
+import { InitialState } from '../redux/initialValue';
 
 //font awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,10 +13,12 @@ import { faUser, faTimes } from '@fortawesome/free-solid-svg-icons'
 import './../scss/sentences.scss'
 
 
+
 const Sentenses = () => {
 
-    const sentences = useSelector<SentencesState, SentencesState['sentences']>((state) => state.sentences);
+    const sentences = useSelector<InitialState, InitialState["sentences"]>((state) => state.sentences);
     const dispatch = useDispatch();
+
 
     const removeSentence = (sentenceId: string) => {
         dispatch({
@@ -23,7 +26,12 @@ const Sentenses = () => {
             payload: sentenceId
         })
     }
+
+    console.log(sentences);
+    console.log(typeof sentences);
     
+    
+
     const displaySentences = sentences.map(sentence => {    
         
         const {who, when, what, where} = sentence.sentence;
