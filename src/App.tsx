@@ -1,4 +1,5 @@
 import React from 'react'
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 //redux
 import { store } from './redux/store';
@@ -14,7 +15,11 @@ const App = () => {
   return(
     <Provider store={store}>
       <FormContainer />
-      <Sentenses />    
+
+      <LazyLoadComponent>
+        <Sentenses />   
+      </LazyLoadComponent> 
+
     </Provider>
   )
 }
