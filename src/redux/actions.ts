@@ -11,4 +11,15 @@ export interface RemoveSentenceAction {
     payload: string
 }
 
+
+export const removeSentence = (sentenceId: string): RemoveSentenceAction => ({
+    type: "REMOVE_SENTENCE",
+    payload: sentenceId,
+});
+
+export const addSentence = (sentence: sentence): AddSentenceAction => ({
+    type: "ADD_SENTENCE",
+    payload: sentence,
+})
+
 export type SentenceActions = AddSentenceAction | RemoveSentenceAction;

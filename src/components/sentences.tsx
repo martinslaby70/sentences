@@ -3,6 +3,7 @@ import React from 'react'
 //redux
 import { useDispatch, useSelector } from 'react-redux';
 import { InitialState } from '../redux/initialValue';
+import { removeSentence } from './../redux/actions'
 
 //font awesome
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -18,14 +19,6 @@ const Sentenses = () => {
 
     const sentences = useSelector<InitialState, InitialState["sentences"]>((state) => state.sentences);
     const dispatch = useDispatch();
-
-    const removeSentence = (sentenceId: string) => {
-        console.log('here');
-        dispatch({
-            type: "REMOVE_SENTENCE",
-            payload: sentenceId
-        });
-    }
 
     return (
         <div className="sentenceContainer">
@@ -47,7 +40,7 @@ const Sentenses = () => {
                                 <p>{who} {what} {where} {when}.</p>
                                 <p className="time">{sentence.created}</p>
                             </div>
-                            <div className="delete" onClick={() => removeSentence(sentence.id)}>
+                            <div className="delete" onClick={() => dispatch(removeSentence(sentence.id))}>
                                 <FontAwesomeIcon icon={faTimes} />
                             </div>
                         </div>

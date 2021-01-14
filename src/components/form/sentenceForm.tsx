@@ -4,6 +4,8 @@ import AvatarPicker from './avatarPicker';
 
 //redux
 import { useDispatch } from 'react-redux';
+import {addSentence} from './../../redux/actions'
+import { sentence } from '../../interfaces/sentence';
 
 const SentenceForm = () => {
     
@@ -36,25 +38,22 @@ const SentenceForm = () => {
         const date = new Date();
         const formatedDate = `${date.getDay()}.${date.getMonth()}.${date.getFullYear()}`;
         
-        dispatch({
-            type: "ADD_SENTENCE",
-            payload: {
-                id: uuid(),
-                created: formatedDate,
-                sentence: {
-                    who,
-                    what,
-                    when,
-                    where
-                },
-                avatar: {
-                    foreground,
-                    background
-                }
+        const sentence: sentence = {
+            id: uuid(),
+            created: formatedDate,
+            sentence: {
+                who,
+                what,
+                when,
+                where
+            },
+            avatar: {
+                foreground,
+                background
             }
-        })
+        } 
+        dispatch(addSentence(sentence));
 
-        
         if (whoRef.current && whatRef.current && whenRef.current && whereRef.current)
             whoRef.current.value = whatRef.current.value = whenRef.current.value = whereRef.current.value = ''; 
 
