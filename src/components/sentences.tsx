@@ -2,7 +2,6 @@ import React from 'react'
 
 //redux
 import { useDispatch, useSelector } from 'react-redux';
-//import { sentence } from '../interfaces/sentence';
 import { InitialState } from '../redux/initialValue';
 
 //font awesome
@@ -18,13 +17,7 @@ import './../scss/sentences.scss'
 const Sentenses = () => {
 
     const sentences = useSelector<InitialState, InitialState["sentences"]>((state) => state.sentences);
-    console.log(sentences);
-    console.log(typeof sentences);
-    
-
-
     const dispatch = useDispatch();
-
 
     const removeSentence = (sentenceId: string) => {
         console.log('here');

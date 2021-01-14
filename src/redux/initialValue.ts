@@ -7,7 +7,7 @@ export interface InitialState {
 }
 
 const initialValue = ():InitialState => {
-    let ret = dummySentences
+    let ret = dummySentences;
    
     let tempSentences: sentence[] = []; 
     let keys = Object.keys(localStorage);
